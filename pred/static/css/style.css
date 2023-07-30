@@ -1,0 +1,68 @@
+
+body, h1, h2, h3, h4, h5, h6, p, label, button, select, input {
+    margin: 0;
+    padding: 0;
+}
+  
+body {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: linear-gradient(to bottom, #fff, #cbf8f8b8);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h1{
+    margin:40px 0px 10px 0px;
+}
+
+h3{
+    margin: 5px 0px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background-image: linear-gradient(45 deg, #f1f1f1, #bdc7c72b);
+    margin-top: 30px;
+}
+
+label{
+    padding: 10px 30px;
+    font-size: 22px;
+}
+select, input{
+    margin: 0px 30px;
+    padding: 10px;
+}
+
+button{
+    margin: 10px 35%;
+    padding: 10px;
+    border: none;
+    background-color: #bdbbbb;
+    color: #dafafa;
+    border-radius: 30px;
+    font-size: 15px;
+}
+
+button:hover{
+    cursor: pointer;
+    color: #fff;
+    background-color: #989595;
+    font-size: 16px;
+}
+
+.prediction{
+    margin: 5px 0px 30px 0px;
+    font-size: 25px;
+}

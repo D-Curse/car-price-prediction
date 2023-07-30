@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <h1>WELCOME TO CAR PRICE PREDICTION</h1>
+    <h3>This app predicts the price of a car you want to sell.</h3>
+    <h3>Try filling the details below</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>Select the company</label>
+        <select name="company" id="company" onchange="load_car_model(this.id,'car_models')">
+            {% for company in companies %}
+            <option value="{{company}}">{{ company }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Select the model</label>
+        <select  name="car_models" id="car_models">
+        </select>
+
+        <label>Select the year of purchase</label>
+        <select name="year">
+            {% for year in years %}
+            <option value="{{year}}">{{ year }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Select the fuel type</label>
+        <select name="fuel_type" >
+            {% for fuel in fuel_types %}
+            <option value="{{fuel}}">{{ fuel }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Enter the number of kilometers car has travelled</label>
+        <input type="text" name="kms_driven" placeholder="Enter the Kilometers Driven">
+
+        <button onclick="send_data()">Predict Price</button>
+    
+    </form>
+    <div class="prediction">
+            <h4><span id="prediction">
+            </span></h4>
+    </div>
+</body>
+<script>
+    function load_car_model(company_id, car_model_id){
+        var company = document.getElementById(company_id);
+        var car_model = document.getElementById(car_model_id);
+        console.log(company.value);
+        car_model.value="";
+        car_model.innerHTML="";
+        {% for company in companies %}
+            if( company.value == "{{ company }}")
+            {
+                {% for model in car_models %}
+                    {% if company in model %}
+    
+                        var newOption= document.createElement("option");
+                        newOption.value="{{ model }}";
+                        newOption.innerHTML="{{ model }}";
+                        car_model.options.add(newOption);
+                    {% endif %}
+                {% endfor %}
+            }
+        {% endfor %}
+    }
+</script>
+<script src="../static/js/script.js"></script>
+</html>
